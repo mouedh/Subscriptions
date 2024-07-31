@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import * as React from 'react';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import Button from '@mui/material/Button';
+//import SubscriptionsList from './components/SubscriptionsList';
+import ButtonSelect from './components/ButtonSelect';
+import Modal1 from './components/Modal1';
+//import SubItem from './components/SubItem';
+import HomeList from './components/HomeList';
+//import Layout from './pages/Layout';
 
-function App() {
+
+export default function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Modal1 /> 
+            
+        <br/>
+        <ButtonSelect/>
+      <br/>
+      <br/>  
+      <div> <HomeList /></div>
+
       </header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="Modal1" element={<Modal1 />} />
+            <Route path="HomeList" element={<HomeList />} />
+      
+          </Routes>
+        </BrowserRouter>
     </div>
+    
   );
 }
-
-export default App;
+ 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
