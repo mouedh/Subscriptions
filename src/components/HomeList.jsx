@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Pagination from '@mui/material/Pagination';
 import ButtonGrp from './ButtonGrp';
-import Modal1 from './Modal1';
 import ReactDOM from "react-dom/client";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -44,7 +43,7 @@ function HomeList() {
           <Stack spacing={2}>
             <Pagination count={10} variant="outlined" shape="rounded" />
           </Stack>
-          <Modal1 /> {/* Include the Modal1 component */}
+          {/* <Modal1 /> Include the Modal1 component */}
         </React.Fragment>
       </UserContext.Provider>
     </>

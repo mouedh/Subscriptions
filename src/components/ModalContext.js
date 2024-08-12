@@ -1,18 +1,18 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useState } from "react";
+//
 // Create a context
-const ModalContext = createContext();
-
+export const ModalContext = createContext();
+//
 // Create a provider component
 export const ModalProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
-    nom: '',
-    prenom: '',
-    telephone: '',
-    selectOption: '',
-    date: '',
-    montant: ''
+    nom: "",
+    prenom: "",
+    telephone: "",
+    selectOption: "",
+    date: "",
+    montant: "",
   });
 
   const handleOpen = () => setOpen(true);
@@ -22,7 +22,7 @@ export const ModalProvider = ({ children }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -30,7 +30,7 @@ export const ModalProvider = ({ children }) => {
     const { value } = e.target;
     setFormData({
       ...formData,
-      date: value
+      date: value,
     });
   };
 
@@ -49,6 +49,8 @@ export const ModalProvider = ({ children }) => {
     </ModalContext.Provider>
   );
 };
-
-// Custom hook to use the ModalContext
-export const useModal = () => useContext(ModalContext);
+// export default ModalProvider
+//
+export default function useModalContext() {
+  return useContext(ModalContext);
+}

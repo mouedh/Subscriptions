@@ -1,56 +1,32 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
-import { TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import IconButton from '@mui/material/IconButton';
-import { UserContext } from './HomeList';
-import { useContext } from 'react';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import {
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import useModalContext from "../components/ModalContext";
 
-function Modal1() {
-  const { users, setUsers } = useContext(UserContext);
-  const [open, setOpen] = React.useState(false);
-  const [formData, setFormData] = React.useState({
-    nom: '',
-    prenom: '',
-    telephone: '',
-    selectOption: '',
-    date: null,
-    montant: ''
-  });
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const handleDateChange = (e) => {
-    const { value } = e.target;
-    setFormData({
-      ...formData,
-      date: value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUsers([...users, formData]);
-    handleClose();
-  };
-
+function ModalBox() {
+  const {
+    open,
+    handleClose,
+    handleChange,
+    handleSubmit,
+    formData,
+    handleDateChange,
+  } = useModalContext();
+  console.log(open);
   return (
     <div>
       <div className="button-container">
-        <Button variant="contained" onClick={handleOpen}>
-          + create new
-        </Button>
+        <Button variant="contained">+ create new</Button>
       </div>
       <Modal
         open={open}
@@ -61,20 +37,26 @@ function Modal1() {
         <Box
           component="form"
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             width: 600,
-            bgcolor: 'background.paper',
+            bgcolor: "background.paper",
             boxShadow: 24,
             p: 4,
-            display: 'flex',
-            flexDirection: 'column'
+            display: "flex",
+            flexDirection: "column",
           }}
           onSubmit={handleSubmit}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <Box sx={{ flexGrow: 1 }} />
             <IconButton aria-label="close" onClick={handleClose}>
               <CloseIcon />
@@ -82,10 +64,10 @@ function Modal1() {
           </Box>
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
               gap: 2,
-              mt: 2
+              mt: 2,
             }}
           >
             <TextField
@@ -153,7 +135,7 @@ function Modal1() {
               onChange={handleChange}
             />
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
             <Button type="submit" variant="contained" color="primary">
               Valider
             </Button>
@@ -164,4 +146,4 @@ function Modal1() {
   );
 }
 
-export default Modal1;
+export default ModalBox;
