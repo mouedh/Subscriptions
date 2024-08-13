@@ -22,7 +22,6 @@ function ModalBox() {
     formData,
     handleDateChange,
   } = useModalContext();
-  console.log(open);
   return (
     <div>
       <div className="button-container">
