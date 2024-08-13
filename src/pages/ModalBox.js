@@ -16,9 +16,9 @@ import useModalContext from "../components/ModalContext";
 function ModalBox() {
   const {
     open,
+    handleOpen,
     handleClose,
     handleChange,
-    handleSubmit,
     formData,
     handleDateChange,
   } = useModalContext();
@@ -26,7 +26,9 @@ function ModalBox() {
   return (
     <div>
       <div className="button-container">
-        <Button variant="contained">+ create new</Button>
+        <Button variant="contained" onClick={handleOpen}>
+          + create new
+        </Button>
       </div>
       <Modal
         open={open}
@@ -48,7 +50,7 @@ function ModalBox() {
             display: "flex",
             flexDirection: "column",
           }}
-          onSubmit={handleSubmit}
+          onSubmit={handleChange}
         >
           <Box
             sx={{
