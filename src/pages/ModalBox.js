@@ -21,7 +21,14 @@ function ModalBox() {
     handleChange,
     formData,
     handleDateChange,
+    setUsers,
+    users,
   } = useModalContext();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUsers([...users, formData]);
+    handleClose();
+  };
   return (
     <div>
       <div className="button-container">
@@ -36,7 +43,7 @@ function ModalBox() {
         aria-describedby="modal-modal-description"
       >
         <Box
-          component="form"
+          component="dev"
           sx={{
             position: "absolute",
             top: "50%",
@@ -49,7 +56,6 @@ function ModalBox() {
             display: "flex",
             flexDirection: "column",
           }}
-          onSubmit={handleChange}
         >
           <Box
             sx={{
@@ -136,11 +142,11 @@ function ModalBox() {
               onChange={handleChange}
             />
           </Box>
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-            <Button type="submit" variant="contained" color="primary">
+          {/* <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}> */}
+            <Button onClick={handleSubmit} variant="contained" color="primary">
               Valider
             </Button>
-          </Box>
+          {/* </Box> */}
         </Box>
       </Modal>
     </div>

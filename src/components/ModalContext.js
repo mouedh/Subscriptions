@@ -6,6 +6,8 @@ export const ModalContext = createContext();
 // Create a provider component
 export const ModalProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
+  const [users, setUsers] = React.useState([]);
+
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",
@@ -42,7 +44,9 @@ export const ModalProvider = ({ children }) => {
         handleOpen,
         handleClose,
         handleChange,
-        handleDateChange
+        handleDateChange,
+        users,
+        setUsers,
       }}
     >
       {children}
